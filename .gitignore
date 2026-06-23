@@ -23,9 +23,14 @@ npm-debug.log*
 .vscode/
 .idea/
 
-# Claude Code（rules のみ追跡し、その他のローカル設定は除外）
+# Claude Code（rules / commands のみ追跡し、その他のローカル設定は除外）
 .claude/*
 !.claude/rules/
+!.claude/commands/
+
+# 発信の生成下書き（WIP は追跡しない）
+marketing/drafts/*
+!marketing/drafts/.gitkeep
 
 # 一時物
 .tmp/

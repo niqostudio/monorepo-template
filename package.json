@@ -11,7 +11,8 @@
     "typecheck": "pnpm -r --if-present run typecheck",
     "build": "pnpm -r --if-present run build",
     "test": "pnpm -r --if-present run test",
-    "dev": "pnpm -r --if-present --parallel run dev"
+    "dev": "pnpm -r --if-present --parallel run dev",
+    "gen:post": "claude \"/gen-post\""
   },
   "devDependencies": {
     "tsx": "^4.22.4",
