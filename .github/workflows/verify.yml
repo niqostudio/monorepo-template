@@ -1,0 +1,36 @@
+name: verify
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: pnpm
+      - run: pnpm install
+      - run: pnpm -r --if-present run typecheck
+      - run: pnpm -r --if-present run build
+      - run: pnpm -r --if-present run test
+
+  secret-scan:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      # gitleaks-action は org で有料ライセンス必須。CLI 本体は無料なので公式イメージを直接回す。
+      - name: gitleaks
+        run: >-
+          docker run --rm -v "$PWD:/repo" ghcr.io/gitleaks/gitleaks:v8.30.1
+          git /repo --config /repo/.gitleaks.toml --redact --verbose

@@ -1,0 +1,11 @@
+# gitleaks 設定。既定ルールに加え、公開してよい既知の値を allowlist して誤検知を抑える。
+title = "monorepo-template"
+
+[extend]
+useDefault = true
+
+[allowlist]
+description = "公開可能な雛形（秘密ではない）"
+paths = [
+  '''.*\.example$''', # env / 設定の雛形（プレースホルダのみ）
+]

@@ -1,0 +1,13 @@
+packages:
+  - "apps/*"
+  - "packages/*"
+
+# native build を実行してよい依存（pnpm10+ は既定で postinstall を止める）。
+# web ツール（Astro/Vite/sharp）でよく要る。不要なら消す。
+allowBuilds:
+  esbuild: true
+  sharp: true
+
+# サプライチェーン対策：新規公開バージョンは 1 日(1440 分)寝かせてから取り込む
+# （乗っ取り即時公開の窓を狭める）。
+minimumReleaseAge: 1440
