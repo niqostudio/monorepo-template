@@ -13,7 +13,7 @@
     "lint:prose": "prose-lint"
   },
   "devDependencies": {
-    "@niqostudio/prose-lint": "link:../toolkit/packages/prose-lint",
+    "@niqostudio/prose-lint": "^0.1.2",
     "@types/node": "^26.6.1",
     "typescript": "^5.9.3",
     "vitest": "^5.0.1"

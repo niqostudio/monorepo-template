@@ -9,8 +9,8 @@ importers:
   .:
     devDependencies:
       '@niqostudio/prose-lint':
-        specifier: link:../toolkit/packages/prose-lint
-        version: link:../toolkit/packages/prose-lint
+        specifier: ^0.1.2
+        version: 0.1.2
       '@types/node':
         specifier: ^26.6.1
         version: 26.6.4
@@ -32,6 +32,11 @@ packages:
 
   '@jridgewell/trace-mapping@0.3.31':
     resolution: {integrity: sha512-zzNR+SdQSDJzc8joaeP8QQoCQr8NuYx2dIIytl1QeBEZHJ9uW6hebsrYgbz8hJwUQao3TWCMtmfV8Nu1twOLAw==}
+
+  '@niqostudio/prose-lint@0.1.2':
+    resolution: {integrity: sha512-YrYVwFw7Igmo7KnvlV2m1wqbJSStp897FBbo5+d6+VqAzVKIYRreY9h3lB84xUmevCcgnZJqBBGP3v7AccZxng==}
+    engines: {node: '>=24'}
+    hasBin: true
 
   '@oxc-project/types@0.152.0':
     resolution: {integrity: sha512-oM/5rLBm2tPkg0iBgkH/FOeR3PCDpY19GTgAZjMFM8h9WI9VW7cLgzp6nwtarYKmovavIQZ+Fe/RKX/8C8O/Rw==}
@@ -415,6 +420,8 @@ snapshots:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.2
       '@jridgewell/sourcemap-codec': 1.6.0
+
+  '@niqostudio/prose-lint@0.1.2': {}
 
   '@oxc-project/types@0.152.0': {}
 
