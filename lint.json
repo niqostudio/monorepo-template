@@ -1,5 +1,0 @@
-{
-  "paths": ["apps", "packages", "scripts"],
-  "docs": ["README.md", "CLAUDE.md"],
-  "vocabulary": []
-}

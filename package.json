@@ -7,12 +7,13 @@
     "node": ">=24"
   },
   "scripts": {
-    "check": "pnpm -r check && tsc && vitest run && node packages/lint/src/cli.ts --summary",
+    "check": "pnpm -r check && tsc && vitest run --passWithNoTests && prose-lint --summary",
     "test": "vitest run",
-    "lint:comments": "node packages/lint/src/cli.ts",
-    "env:push": "node scripts/env.ts push"
+    "env:push": "node scripts/env.ts push",
+    "lint:prose": "prose-lint"
   },
   "devDependencies": {
+    "@niqostudio/prose-lint": "link:../toolkit/packages/prose-lint",
     "@types/node": "^26.6.1",
     "typescript": "^5.9.3",
     "vitest": "^5.0.1"

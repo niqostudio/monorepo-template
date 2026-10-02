@@ -8,6 +8,9 @@ importers:
 
   .:
     devDependencies:
+      '@niqostudio/prose-lint':
+        specifier: link:../toolkit/packages/prose-lint
+        version: link:../toolkit/packages/prose-lint
       '@types/node':
         specifier: ^26.6.1
         version: 26.6.4
@@ -17,15 +20,6 @@ importers:
       vitest:
         specifier: ^5.0.1
         version: 5.0.3(@types/node@26.6.4)(vite@8.3.2(@types/node@26.6.4))
-
-  packages/lint:
-    devDependencies:
-      '@types/node':
-        specifier: ^26.6.1
-        version: 26.6.4
-      typescript:
-        specifier: ^5.9.3
-        version: 5.9.3
 
 packages:
 
