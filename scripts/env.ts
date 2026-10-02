@@ -48,7 +48,7 @@ function pushTo(target: Target, key: string, value: string): number {
 
 async function push(args: string[]): Promise<number> {
   const dryRun = args.includes('--dry-run');
-  if (!GITHUB_REPO) {
+  if (!GITHUB_REPO && !dryRun) {
     console.error('GITHUB_REPO 未設定（scripts/env.ts）');
     return 1;
   }

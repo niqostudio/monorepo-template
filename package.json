@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "@niqostudio/monorepo-template",
   "private": true,
   "type": "module",
   "packageManager": "pnpm@10.28.0",
@@ -7,14 +7,18 @@
     "node": ">=24"
   },
   "scripts": {
-    "check": "pnpm -r check && tsc && vitest run --passWithNoTests && prose-lint --summary",
-    "test": "vitest run",
+    "lint": "pnpm typecheck && prose-lint",
+    "lint:prose": "prose-lint",
+    "typecheck": "pnpm -r --if-present typecheck && tsc",
+    "test": "vitest run --passWithNoTests",
     "env:push": "node scripts/env.ts push",
-    "lint:prose": "prose-lint"
+    "prepare": "git config core.hooksPath .githooks"
   },
   "devDependencies": {
-    "@niqostudio/prose-lint": "^0.1.2",
+    "@niqostudio/prose-lint": "^0.5.0",
+    "@types/cross-spawn": "^6.0.6",
     "@types/node": "^26.6.1",
+    "cross-spawn": "^7.0.6",
     "typescript": "^5.9.3",
     "vitest": "^5.0.1"
   }

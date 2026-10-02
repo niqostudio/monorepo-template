@@ -1,14 +1,8 @@
-import { spawnSync, type SpawnSyncOptions } from 'node:child_process';
+import type { SpawnSyncOptions } from 'node:child_process';
+import spawn from 'cross-spawn';
 
-// Windows: .cmd 実行にシェル必須 → 引数は明示クォート（シェル経由の空白分割回避）
-const quote = (arg: string) => (/^[\w\-.:/=@,+]+$/.test(arg) ? arg : `"${arg.replaceAll('"', '\\"')}"`);
-
+// Windows の .cmd（pnpm・npx など）も引数を加工せずに指定。シェルの引用は cross-spawn が処理
 export function exec(command: string, args: string[], options: SpawnSyncOptions = {}): number {
-  const windows = process.platform === 'win32';
-  const { status } = spawnSync(windows ? quote(command) : command, windows ? args.map(quote) : args, {
-    stdio: 'inherit',
-    shell: windows,
-    ...options,
-  });
+  const { status } = spawn.sync(command, args, { stdio: 'inherit', ...options });
   return status ?? 1;
 }

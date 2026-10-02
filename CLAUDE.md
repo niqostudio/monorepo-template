@@ -5,7 +5,7 @@
 ## 規約
 
 - 構成: パッケージの責務・制約・依存は README の「Structure」に準拠
-- エントリーポイント: パッケージごとに `src/index.ts`。export は外部で使用するものだけ・他パッケージの再 export なし
+- エントリポイント: パッケージごとに `src/index.ts`。export は外部で使用するものだけ・他パッケージの再 export なし
 - 秘密値: ルート `.env` に集約し、配信は `pnpm env:push` に一本化。`.env`・`*.tfvars`・state はコミット禁止
 - `.env.example`: 変数追加時は `scripts/env.ts` の `TARGETS` にも定義
 - YAML の拡張子: `.yaml`（pnpm のファイルと統一）
@@ -15,7 +15,7 @@
 
 - 散文より構造化（表・箇条書き・キー: 値）
 - 技術語彙（カタカナ語・漢語・漢語複合）で簡潔に
-- README の見出しは英語、本文は日本語
+- README: 英語
 - コード上の値・環境変数の参照はコードの名前で、バッククォートで囲む。ドメインの概念・説明・表示文字列は日本語
 - コメントは非自明な理由・制約のみ。書式は既存に準拠し、`pnpm lint:prose` で確認（コメント・Markdown）
   - 規則: `@niqostudio/prose-lint`（toolkit のリポで管理・npm で配布）

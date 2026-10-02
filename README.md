@@ -1,31 +1,45 @@
-# template
+# monorepo-template
 
-モノリポの雛形。規約（文体・コメント・コミット・秘密値）と、その検査の設定を持つ出発点
+A starting point for NIQO STUDIO monorepos. It includes the shared conventions (writing style, comments, commits, secrets), style checks, CI, and tool versions.
 
 ## Structure
 
-| パス | 責務 | 依存 |
+| Path | Purpose | Depends on |
 | --- | --- | --- |
-| `apps/*` | 実行物 | `packages/*` |
-| `packages/*` | リポの中で共有するコード | — |
-| `scripts/` | リポの運用（`.env` の操作など） | — |
+| `apps/*` | Applications | `packages/*` |
+| `packages/*` | Code shared within this repository | — |
+| `scripts/` | Repository operations, such as managing `.env` | — |
 
-- 複数のリポで共有するものは toolkit のリポで管理し、npm から依存（このリポには置かない）
+Code shared across repositories lives in [toolkit](https://github.com/niqostudio/toolkit) and is installed from npm.
 
-## Operations
+## Commands
 
-| コマンド | 内容 |
+```sh
+pnpm lint                      # type check and prose-lint
+pnpm lint:prose [paths...]     # prose-lint only (code comments and tracked Markdown)
+pnpm lint:prose --fix          # fix spacing and trailing-comment alignment in code comments
+pnpm test                      # tests
+node scripts/env.ts run <cmd>  # run a command with .env loaded
+pnpm env:push [--dry-run]      # push .env values to GitHub Variables / Secrets
+```
+
+- Style rules and settings: [`@niqostudio/prose-lint`](https://www.npmjs.com/package/@niqostudio/prose-lint). Add `prose-lint.json` to the root only to change the defaults.
+- Commit messages are checked by `.githooks/commit-msg`, enabled by `prepare` on `pnpm install`.
+- `env:push` targets are defined in `TARGETS` in `scripts/env.ts`.
+
+## Tooling
+
+| File | Purpose |
 | --- | --- |
-| `pnpm check` | 型・テスト・文章の検査（集計のみ） |
-| `pnpm lint:prose [パス...] [--fix]` | コード中のコメントと、git で追跡する Markdown の文体の検査。`--fix` は和欧間のスペースと行末コメントの開始位置だけ修正 |
-| `node scripts/env.ts run <cmd>` | `.env` をロードしてコマンド実行 |
-| `pnpm env:push [--dry-run]` | `.env` → GitHub Variables / Secrets。配信先は `scripts/env.ts` の `TARGETS` |
+| `mise.toml` | Node.js and Terraform versions (pnpm is pinned by `packageManager` in `package.json`) |
+| `.github/workflows/ci.yaml` | Typecheck, Test, Prose lint, and Secret scan on pushes to `main` and on pull requests |
+| `.github/dependabot.yaml` | Weekly update PRs for npm and GitHub Actions (minor and patch grouped) |
+| `.gitleaks.toml` | Secret scan settings |
+| `.editorconfig`, `.gitattributes` | Encoding, indentation, and LF line endings |
 
-- 文体の検査の規則と設定: `@niqostudio/prose-lint`（toolkit の README）。変更する場合だけルートに `prose-lint.json`
+## Creating a repository from this template
 
-## Creating a repo from this template
-
-1. このリポを `.git` を除いて複製し、`git init`
-2. `package.json` の `name`、`README.md`・`CLAUDE.md` の冒頭を変更
-3. `scripts/env.ts` の `GITHUB_REPO`・`TARGETS` と `.env.example` を設定
-4. `pnpm install` → `pnpm check`
+1. Copy this repository without `.git`, then run `git init`.
+2. Update `name` in `package.json` and the opening lines of `README.md` and `CLAUDE.md`.
+3. Set `GITHUB_REPO` and `TARGETS` in `scripts/env.ts`, and `.env.example`.
+4. Run `mise install`, `pnpm install`, `pnpm lint`, and `pnpm test`.
