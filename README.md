@@ -2,7 +2,7 @@
 
 モノリポの雛形。規約（文体・コメント・コミット・秘密値）と、その検査の設定を持つ出発点
 
-## 構成
+## Structure
 
 | パス | 責務 | 依存 |
 | --- | --- | --- |
@@ -12,7 +12,7 @@
 
 - 複数のリポで共有するものは toolkit のリポで管理し、npm から依存（このリポには置かない）
 
-## 運用
+## Operations
 
 | コマンド | 内容 |
 | --- | --- |
@@ -23,7 +23,7 @@
 
 - 文体の検査の規則と設定: `@niqostudio/prose-lint`（toolkit の README）。変更する場合だけルートに `prose-lint.json`
 
-## 雛形からの作成
+## Creating a repo from this template
 
 1. このリポを `.git` を除いて複製し、`git init`
 2. `package.json` の `name`、`README.md`・`CLAUDE.md` の冒頭を変更
