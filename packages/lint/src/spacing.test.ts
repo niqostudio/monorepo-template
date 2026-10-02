@@ -22,4 +22,4 @@ describe('autoSpace', () => {
     const once = autoSpace('AIによって2026年9月に Notion の API を使う');
     expect(autoSpace(once)).toBe(once);
   });
-
+});
