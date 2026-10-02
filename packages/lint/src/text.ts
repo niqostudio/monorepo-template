@@ -1,10 +1,10 @@
 // 文章の書式の判定と自動修正（技術文書の文体: 漢語・エンジニア語彙・和欧間・句読点・括弧）
-import { autoSpace } from './autospace.ts';
+import { autoSpace } from './spacing.ts';
 
 // 和語・平易な語 → 漢語・エンジニア語彙。動詞は語幹と活用語尾で照合（「作成」「消費」などの漢語は語尾が不一致）
 export type Vocabulary = { re: RegExp; to: string }[];
 
-// 共通の語彙。リポ固有の語彙（コード上の名前で書く語など）は `conventions.json` の `vocabulary`
+// 共通の語彙。リポ固有の語彙（コード上の名前で書く語など）は `lint.json` の `vocabulary`
 export const VOCABULARY: Vocabulary = [
   { re: /変え[るたてなよ]|変わ[るらりっ]/, to: '変更' },
   { re: /作[るらりれろっ]/, to: '作成' },

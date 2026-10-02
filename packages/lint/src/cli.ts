@@ -1,7 +1,7 @@
 // コメント・ドキュメントの文体の検査。違反があれば終了コード1
 //   node <このファイル> [パス...] [--summary] [--fix]
 //   --fix: 和欧間のスペースと、行末コメントの開始位置だけ自動修正（語彙・構造は文脈の判断が必要）
-// 設定 = 実行ディレクトリの `conventions.json`（なければ既定値）
+// 設定 = 実行ディレクトリの `lint.json`（なければ既定値）
 import { execFileSync } from 'node:child_process';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 import { parseArgs } from 'node:util';
@@ -26,7 +26,7 @@ const DEFAULTS: Config = {
   vocabulary: [],
 };
 
-const config: Config = { ...DEFAULTS, ...(existsSync('conventions.json') ? (JSON.parse(readFileSync('conventions.json', 'utf8')) as Partial<Config>) : {}) };
+const config: Config = { ...DEFAULTS, ...(existsSync('lint.json') ? (JSON.parse(readFileSync('lint.json', 'utf8')) as Partial<Config>) : {}) };
 const vocabulary: Vocabulary = [...VOCABULARY, ...config.vocabulary.map((v) => ({ re: new RegExp(v.re, v.flags), to: v.to }))];
 const skip = new RegExp(config.skip);
 const trailingFiles = new RegExp(config.trailingFiles);

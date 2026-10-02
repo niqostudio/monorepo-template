@@ -1,5 +1,5 @@
 {
-  "name": "@niqostudio/conventions",
+  "name": "@niqostudio/lint",
   "private": true,
   "type": "module",
   "exports": {

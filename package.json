@@ -7,9 +7,9 @@
     "node": ">=24"
   },
   "scripts": {
-    "check": "pnpm -r check && tsc && vitest run && node packages/conventions/src/cli.ts --summary",
+    "check": "pnpm -r check && tsc && vitest run && node packages/lint/src/cli.ts --summary",
     "test": "vitest run",
-    "lint:comments": "node packages/conventions/src/cli.ts",
+    "lint:comments": "node packages/lint/src/cli.ts",
     "env:push": "node scripts/env.ts push"
   },
   "devDependencies": {

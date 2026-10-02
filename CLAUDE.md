@@ -16,8 +16,8 @@
 - 技術語彙（カタカナ語・漢語・漢語複合）で簡潔に
 - コード上の値・環境変数の参照はコードの名前で、バッククォートで囲む。ドメインの概念・説明・表示文字列は日本語
 - コメントは非自明な理由・制約のみ。書式は既存に準拠し、`pnpm lint:comments` で確認
-  - 規則: `@niqostudio/conventions`（`packages/conventions`）
-  - リポ固有の語彙: `conventions.json` の `vocabulary`
+  - 規則: `@niqostudio/lint`（`packages/lint`）
+  - リポ固有の語彙: `lint.json` の `vocabulary`
 
 ## コミット
 
