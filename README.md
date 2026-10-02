@@ -39,7 +39,14 @@ pnpm env:push [--dry-run]      # push .env values to GitHub Variables / Secrets
 
 ## Creating a repository from this template
 
-1. Copy this repository without `.git`, then run `git init`.
-2. Update `name` in `package.json` and the opening lines of `README.md` and `CLAUDE.md`.
-3. Set `GITHUB_REPO` and `TARGETS` in `scripts/env.ts`, and `.env.example`.
-4. Run `mise install`, `pnpm install`, `pnpm lint`, and `pnpm test`.
+This repository is a GitHub template. Click **Use this template** on GitHub, or run:
+
+```sh
+gh repo create niqostudio/<name> --template niqostudio/monorepo-template --private --clone
+```
+
+Then in the new repository:
+
+1. Update `name` in `package.json` and the opening lines of `README.md` and `CLAUDE.md`.
+2. Set `GITHUB_REPO` and `TARGETS` in `scripts/env.ts`, and `.env.example`.
+3. Run `mise install`, `pnpm install`, `pnpm lint`, and `pnpm test`.
