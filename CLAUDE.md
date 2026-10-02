@@ -8,6 +8,7 @@
 - エントリーポイント: パッケージごとに `src/index.ts`。export は外部で使用するものだけ・他パッケージの再 export なし
 - 秘密値: ルート `.env` に集約し、配信は `pnpm env:push` に一本化。`.env`・`*.tfvars`・state はコミット禁止
 - `.env.example`: 変数追加時は `scripts/env.ts` の `TARGETS` にも定義
+- YAML の拡張子: `.yaml`（pnpm のファイルと統一）
 - 個人名: リポに記載禁止（コード・コメント・ドキュメント・設定値すべて）
 
 ## 文体（README・コメント共通）
